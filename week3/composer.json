@@ -1,0 +1,15 @@
+{
+  "name": "Stekkerdoos/DDWT18_week3",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Erwin Meijerhof",
+      "email": "e.meijerhof.1@student.rug.nl"
+    }
+  ],
+  "require": {
+    "bramus/router": "1.3"
+  }
+}

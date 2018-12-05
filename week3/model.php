@@ -258,3 +258,46 @@ function redirect($location){
     header(sprintf('Location: %s', $location));
     die();
 }
+
+/**
+ * Sets Content-Type in HTTP Header to given MIME type
+ * @param string $content_type MIME type
+ */
+function http_content_type($content_type){
+    header(sprintf('Content-Type: %s', $content_type));
+}
+
+/**
+ * Sets user credentials
+ * @param string $username user username
+ * @param string $password user password
+ * @return array of username and password credentials
+ */
+function set_cred($username, $password){
+    return [
+    'username'=> $username,
+    'password'=> $password
+    ];
+}
+
+/**
+ * Evaluates user credentials against credentials in request headers
+ * @param array $cred associative array containing user credentials
+ * @return bool
+ */
+function check_cred($cred){
+    if (!isset($_SERVER['PHP_AUTH_USER'])){
+        return False;
+    }
+    else {
+        if ($_SERVER['PHP_AUTH_USER'] != $cred['username']){
+            return False;
+        }
+        elseif ($_SERVER['PHP_AUTH_PW'] != $cred['password']){
+            return False;
+        }
+        else {
+            return True;
+        }
+    }
+}
